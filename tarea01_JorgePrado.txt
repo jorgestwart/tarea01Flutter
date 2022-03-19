@@ -1,0 +1,186 @@
+void main() {
+  
+  // Tarea 01 (Jorge Prado)
+  
+  //01 Crear un programa con 3 variables enteros e identificar cual es el mayor, usar IF, ELSEIF, ELSE
+  pinta_mayor(2,3,1);
+  
+  //02 Crear una calculadora (suma, resta, multiplicación, división), usar funciones
+  //   (S)uma   (R)esta   (M)ultiplicar   (D)ividir
+  calculador("D",1,2);
+  
+  //03 Recorrer los siguientes valores y mostrarlo en un print List<String> animals = ['Perro', 'Gato', 'Ratón']; 
+  //   usar forEach y función de flecha
+  // recorre_muestra(["Perro", "Gato", "Ratón"]);
+  recorre_muestra(["Perro", "Gato", "Ratón"]);
+  
+  //04 Combiar las siguientes listas y mostrarlo en un print 
+  //   List<String> animales = ['Conejo', 'Gato'];
+  //   List<String> mascotas = ['Tortuga', 'Perro'];
+  //   como resultado debe mostrar: [Conejo, Gato, Tortuga, Perro]
+  combinar_listas(['Conejo', 'Gato'],['Tortuga', 'Perro']);
+  
+  //05 Crear una función y como parámetro me permita recibir una lista de String (pintar los valores)
+  pintar_valores(["Jorge","Eduardo","Jonathan","Logan","Italo"]);
+  
+  //06 Crear una función con argumentos con Nombre, como parámetros reciba una lista de String y otra lista de Enteros (pintar los valores)
+  pintar_listas(["Gustavo","Angel","Rafael","Donatelo","Miguel"], [1,2,3,4,5]);
+
+  //07 Crear una función que me retorne una Lista de String
+  print(listaMateriales());
+  
+  //08 Crear una clase con 3 propiedades y mencionarlos en su constructor
+  
+  /*
+  Vehiculo obj = Vehiculo();
+  obj.marca = "Zusuki";
+  obj.modelo = "Vitara";
+  obj.anio = "2017";
+  obj.poder = 16;
+  obj.imprimir();
+  obj.CalcularFuerza();
+  */
+  
+  Vehiculo obj = Vehiculo(
+    marca: "Zusuki",
+    modelo: "Grand Vitara",
+    anio: "2017",
+    poder: 16
+  );
+  obj.imprimir();
+  obj.CalcularFuerza();
+  
+  
+  
+  
+  //XX - Funciones
+  saludar("Hola que tal!!!","Jorge");
+  print(suma());
+  print(getNames());
+  
+  
+}
+
+//01 
+void pinta_mayor(int a, int b, int c){
+  int t,mayor;  
+  if(a > b){t = a;}else{t = b;}
+  if(t > c){mayor = t;}else{mayor = c;}
+  print("el valor mayor es: "+ mayor.toString());
+}
+
+//02
+void calculador(String ope, double a, double b){
+  double r = 0;
+  String operacion="";
+  switch(ope){
+    case 'S':
+      r = a + b;
+      operacion="suma";
+      break;
+    case 'R':
+      r = a - b;
+      operacion="resta";
+      break;
+    case 'M':
+      r = a * b;
+      operacion="muliplicacion";
+      break;
+    case 'D':
+      r = a / b;
+      operacion="division";
+      break;
+  }
+  print("el resultado de la $operacion es: "+ r.toString());
+}
+
+//03 
+void recorre_muestra(List<String> lstAnimals)=>lstAnimals.forEach((element) => print(element));
+
+//04
+void combinar_listas(List<String> lstAnimales, List<String> lstMascotas){  
+  // lstAnimales.addAll(lstMascotas);
+  // print(lstAnimales);  
+  
+  // var newList = new List.from(lstAnimales)..addAll(lstMascotas);
+  // print(newList);  
+  
+  // var newList = [lstAnimales, lstMascotas].expand((x) => x).toList();
+  // print(newList);  
+   
+  // var newList = lstAnimales + lstMascotas;
+  // print(newList);  
+  
+  var newList = [...lstAnimales, ...lstMascotas];
+  print(newList);      
+}
+
+//05
+void pintar_valores(List<String> lstNombres){
+  print(lstNombres);
+}
+
+//06
+void pintar_listas(List<String> lstCad, List<int> lstNum){
+  print("$lstCad $lstNum");
+}
+ 
+//07 
+List<String> listaMateriales(){
+    return ["Martillo", "Clavos", "Madera"];
+}
+
+//08
+class Vehiculo{  
+  Vehiculo({
+    this.marca,
+    this.modelo,
+    this.anio,
+    this.poder,
+  });
+    
+  String? marca;
+  String? modelo;
+  String? anio;
+  int? poder;
+  
+  void imprimir(){
+    print("marca: $marca modelo: $modelo anio:$anio poder:$poder");  
+  }
+  
+  void CalcularFuerza(){    
+    print(poder ?? 10 * 2);  
+    /*
+    if(poder!=null){
+      print(poder !* 2);  
+    }    
+    */
+  }
+  
+}
+
+
+
+
+
+
+
+
+int suma(){
+  return 5 + 4;  
+}
+
+List<String> getNames(){
+  return ["Gustavo","Angel"];
+}
+
+void saludar(String saluda, String nombre){
+  print("$saluda $nombre");
+}
+
+
+
+
+
+
+
